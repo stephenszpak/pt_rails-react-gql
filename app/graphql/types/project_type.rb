@@ -4,5 +4,7 @@ module Types
     field :title, String, null: false
     field :description, String, null: true
     field :is_completed, Boolean, null: true
+
+    field :user, Types::UserType, null: false
   end
 end

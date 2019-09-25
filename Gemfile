@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'graphql-batch'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
@@ -54,3 +54,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "graphql", "~> 1.9"
 
 gem 'graphiql-rails', group: :development
+gem "rspec-rails", "= 4.0.0.beta2", :groups => [:development, :test]
+
+gem "factory_bot_rails", "~> 5.0", :groups => [:development, :test]

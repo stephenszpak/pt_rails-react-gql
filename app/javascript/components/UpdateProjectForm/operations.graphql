@@ -1,0 +1,20 @@
+mutation UpdateProjectMutation(
+  $id: ID!
+  $title: String!
+  $description: String
+  $isCompleted: Boolean
+) {
+  updateProject(
+    id: $id
+    title: $title
+    description: $description
+    isCompleted: $isCompleted
+  ) {
+    project {
+      id
+      title
+      description
+      isCompleted
+    }
+  }
+}

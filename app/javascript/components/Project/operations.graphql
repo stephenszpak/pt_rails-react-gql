@@ -1,0 +1,12 @@
+query ProjectQuery {
+    projects {
+      id
+      title
+      description
+      isCompleted
+      user {
+        id
+        email
+      }
+    }
+  }

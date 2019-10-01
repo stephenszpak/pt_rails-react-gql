@@ -1,0 +1,6 @@
+fragment ProjectFragment on Project {
+  id
+  title
+  description
+  isCompleted
+}

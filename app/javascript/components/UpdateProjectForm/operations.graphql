@@ -1,3 +1,5 @@
+#import '../../fragments/Project.graphql'
+
 mutation UpdateProjectMutation(
   $id: ID!
   $title: String!
@@ -11,10 +13,7 @@ mutation UpdateProjectMutation(
     isCompleted: $isCompleted
   ) {
     project {
-      id
-      title
-      description
-      isCompleted
+      ...ProjectFragment
     }
   }
 }

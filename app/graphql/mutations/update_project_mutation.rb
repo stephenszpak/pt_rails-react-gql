@@ -9,10 +9,7 @@ module Mutations
     field :errors, [String], null: false
 
     def resolve(id:, title:, description: nil, is_completed: nil)
-      if context[:current_user].nil?
-        raise GraphQL::ExecutionError,
-              "You need to authenticate to perform this action"
-      end
+      check_authentication!
 
       project = Project.find(id)
 

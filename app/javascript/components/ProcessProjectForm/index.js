@@ -7,7 +7,8 @@ const ProcessProjectForm = ({
   initialIsCompleted = false,
   onProcessProject,
   buttonText,
-  loading
+  loading,
+  errors
 }) => {
   const [title, setTitle] = useState(initialTitle);
   const [description, setDescription] = useState(initialDescription);
@@ -15,6 +16,11 @@ const ProcessProjectForm = ({
 
   return (
     <div className={cs.form}>
+      {errors && (
+        <div className={cs.errors}>
+          <div className="error">{errors.fullMessages.join('; ')}</div>
+        </div>
+      )}
       <input
         type="text"
         placeholder="title"

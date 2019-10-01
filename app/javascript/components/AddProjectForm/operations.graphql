@@ -5,13 +5,16 @@ mutation AddProjectMutation(
   $description: String
   $isCompleted: Boolean
 ) {
-  addProject(title: $title, description: $description, isCompleted: $isCompleted) {
+  addProject(attributes: { title: $title, description: $description, isCompleted: $isCompleted }) {
     project {
       ...ProjectFragment
       user {
         id
         email
       }
+    }
+    errors {
+      fullMessages
     }
   }
 }

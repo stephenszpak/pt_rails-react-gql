@@ -1,22 +1,21 @@
 module Mutations
   class UpdateProjectMutation < Mutations::BaseMutation
     argument :id, ID, required: true
-    argument :title, String, required: true
-    argument :description, String, required: false
-    argument :is_completed, Boolean, required: false
+    argument :attributes, Types::ProjectAttributes, required: true
 
     field :project, Types::ProjectType, null: true
-    field :errors, [String], null: false
+    field :errors, Types::ValidationErrorsType, null: true
 
-    def resolve(id:, title:, description: nil, is_completed: nil)
+    def resolve(id:, attributes:)
       check_authentication!
 
       project = Project.find(id)
 
-      if project.update(title: title, description: description, is_completed: is_completed)
+      if project.update(attributes.to_h)
+        ProjectTrackerSchema.subscriptions.trigger('projectUpdated', {}, project)
         { project: project }
       else
-        { errors: project.errors.full_messages }
+        { errors: project.errors }
       end
     end
   end

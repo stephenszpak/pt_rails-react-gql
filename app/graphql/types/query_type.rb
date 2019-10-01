@@ -3,7 +3,7 @@ module Types
     field :projects, [Types::ProjectType], null: false, description: 'Returns list of projects'
 
     def projects
-      Project.all
+      Project.preload(:user)
     end
 
     field :me, Types::UserType, null: true

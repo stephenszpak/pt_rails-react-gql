@@ -6,14 +6,12 @@ mutation UpdateProjectMutation(
   $description: String
   $isCompleted: Boolean
 ) {
-  updateProject(
-    id: $id
-    title: $title
-    description: $description
-    isCompleted: $isCompleted
-  ) {
+  updateProject(id: $id, attributes: { title: $title, description: $description, isCompleted: $isCompleted}) {
     project {
       ...ProjectFragment
+    }
+    errors {
+      fullMessages
     }
   }
 }

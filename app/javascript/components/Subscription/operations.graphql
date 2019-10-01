@@ -1,0 +1,19 @@
+#import '../../fragments/Project.graphql'
+
+subscription ProjectSubscription {
+  projectAdded {
+    ...ProjectFragment
+    user {
+      id
+      email
+    }
+  }
+
+  projectUpdated {
+    ...ProjectFragment
+    user {
+      id
+      email
+    }
+  }
+}

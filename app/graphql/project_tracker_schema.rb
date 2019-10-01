@@ -1,6 +1,8 @@
 class ProjectTrackerSchema < GraphQL::Schema
+  use GraphQL::Subscriptions::ActionCableSubscriptions
+  use GraphQL::Batch
+
   mutation(Types::MutationType)
   query(Types::QueryType)
-
-  use GraphQL::Batch
+  subscription(Types::SubscriptionType)
 end

@@ -6,10 +6,11 @@ import { ProjectQuery } from '../Project/operations.graphql';
 
 const AddProjectForm = () => (
   <Mutation mutation={AddProjectMutation}>
-    {(addProject, { loading }) => (
+    {(addProject, { loading, data }) => (
       <ProcessProjectForm
         buttonText="Add Project"
         loading={loading}
+        errors={data && data.addProject.errors}
         // Update Project query after Mutation will be finished
         onProcessProject={({ title, description, isCompleted }) =>
           addProject({
